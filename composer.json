@@ -1,20 +1,25 @@
 {
-  "name": "p3k/emoji-detector",
+  "name": "andrewdavid/emoji-detector",
   "description": "Detect and return all emoji found in a string",
   "type": "library",
   "license": "MIT",
-  "homepage": "https://github.com/aaronpk/emoji-detector-php",
+  "homepage": "https://github.com/AndrewDavid/emoji-detector-php",
   "authors": [
     {
       "name": "Aaron Parecki",
       "email": "aaron@parecki.com",
       "homepage": "https://aaronparecki.com/"
+    },
+    {
+      "name": "Andrew-David Jahchan",
+      "email": "hello@andrewdavid.net",
+      "homepage": "https://andrewdavid.net/"
     }
   ],
   "autoload": {
-    "files": [
-      "src/Emoji.php"
-    ]
+    "psr-4": {
+      "src\\emoji-detector\\": "src/emoji-detector/"
+    }
   },
   "autoload-dev": {
     "psr-4": {

@@ -35,7 +35,7 @@ foreach($emoji_data as $emoji) {
   }
 }
 
-file_put_contents(dirname(__FILE__).'/../src/map.json', json_encode($map, JSON_PRETTY_PRINT));
+file_put_contents(dirname(__FILE__).'/../src/emoji-detector/map.json', json_encode($map, JSON_PRETTY_PRINT));
 
 $keys = array_keys($map);
 usort($keys,function($a,$b){
@@ -43,4 +43,4 @@ usort($keys,function($a,$b){
 });
 $all = preg_replace('/\-?([0-9a-f]+)/i', '\x{$1}', implode('|', $keys));
 
-file_put_contents(dirname(__FILE__).'/../src/regexp.json', json_encode($all));
+file_put_contents(dirname(__FILE__).'/../src/emoji-detector/regexp.json', json_encode($all));

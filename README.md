@@ -7,10 +7,10 @@ Installation
 ------------
 
 ```
-composer require p3k/emoji-detector
+composer require andrewdavid/emoji-detector
 ```
 
-Or include `src/Emoji.php` in your project, and make sure the `map.json` and `regexp.json` files are available in the same folder as `Emoji.php`. You don't need any of the other files for use in your own projects.
+Or include `src/emoji-detector/Emoji.php` in your project, and make sure the `map.json` and `regexp.json` files are available in the same folder as `Emoji.php`. You don't need any of the other files for use in your own projects.
 
 Usage
 -----
@@ -19,7 +19,7 @@ Usage
 
 ```php
 $input = "Hello 👍🏼 World 👨‍👩‍👦‍👦";
-$emoji = Emoji\detect_emoji($input);
+$emoji = (new Emoji\EmojiDetector())->detectEmoji($input);
 
 print_r($emoji);
 ```
@@ -80,7 +80,7 @@ You can use the `grapheme_*` functions to extract parts of the string using the 
 
 ```php
 $string = "Trešnja 🍒";
-$emoji = Emoji\detect_emoji($string);
+$emoji = (new Emoji\EmojiDetector())->detectEmoji($string);
 echo '.'.grapheme_substr($string, 0, $emoji[0]['grapheme_offset']).".\n";
 echo '.'.substr($string, 0, $emoji[0]['byte_offset']).".\n";
 // Both output ".Trešnja ."
@@ -91,7 +91,7 @@ echo '.'.substr($string, 0, $emoji[0]['byte_offset']).".\n";
 #### Replace emoji with string representations
 
 ```php
-$string = Emoji\replace_emoji('I like 🌮 and 🌯', ':', ':');
+$string = (new Emoji\EmojiDetector())->replaceEmoji('I like 🌮 and 🌯', ':', ':');
 echo $string;
 // I like :taco: and :burrito:
 ```
@@ -102,7 +102,7 @@ echo $string;
 Since simply counting the number of unicode characters in a string does not tell you how many visible emoji are in the string, determining whether a single character is an emoji is more involved. This function will return the emoji data only if the string contains a single emoji character, and false otherwise.
 
 ```php
-$emoji = Emoji\is_single_emoji('👨‍👩‍👦‍👦');
+$emoji = (new Emoji\EmojiDetector())->isSingleEmoji('👨‍👩‍👦‍👦');
 print_r($emoji);
 ```
 
@@ -131,7 +131,7 @@ Array
 ```
 
 ```php
-$emoji = Emoji\is_single_emoji('😻🐈');
+$emoji = (new Emoji\EmojiDetector())->isSingleEmoji('😻🐈');
 // false
 ```
 

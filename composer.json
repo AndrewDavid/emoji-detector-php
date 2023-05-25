@@ -18,12 +18,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "EmojiDetector\\": "src/"
+      "EmojiDetector\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "EmojiDetector\\": "tests/"
+      "EmojiDetector\\": "tests"
     }
   },
   "minimum-stability": "dev",

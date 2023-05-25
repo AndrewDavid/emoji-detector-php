@@ -18,7 +18,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "src\\emoji-detector\\": "src/emoji-detector/"
+      "EmojiDetector\\": "src/emoji-detector/"
     }
   },
   "autoload-dev": {

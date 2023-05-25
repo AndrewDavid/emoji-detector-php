@@ -1,5 +1,5 @@
 <?php
-namespace Emoji;
+namespace EmojiDetector;
 
 define("LONGEST_EMOJI", 8);
 

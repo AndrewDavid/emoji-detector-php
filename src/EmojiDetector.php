@@ -15,12 +15,12 @@ class EmojiDetector
 
 		static $map;
 		if (!isset($map)) {
-			$map = loadMap();
+			$map = $this->loadMap();
 		}
 
 		static $regexp;
 		if (!isset($regexp)) {
-			$regexp = loadRegexp();
+			$regexp = $this->loadRegexp();
 		}
 
 		if (preg_match_all($regexp, $string, $matches, PREG_OFFSET_CAPTURE)) {
@@ -38,7 +38,7 @@ class EmojiDetector
 
 				$points = [];
 				for ($i = 0; $i < $mbLength; $i++) {
-					$points[] = strtoupper(dechex(uniord(mb_substr($ch, $i, 1))));
+					$points[] = strtoupper(dechex($this->uniord(mb_substr($ch, $i, 1))));
 				}
 				$hexstr = implode("-", $points);
 
@@ -84,7 +84,7 @@ class EmojiDetector
 
 	public function getFirstEmoji($string)
 	{
-		$emojis = detectEmoji($string);
+		$emojis = $this->detectEmoji($string);
 		if (count($emojis)) {
 			return $emojis[0];
 		} else {
@@ -102,7 +102,7 @@ class EmojiDetector
 			return false;
 		}
 
-		$all_emoji = detectEmoji($string);
+		$all_emoji = $this->detectEmoji($string);
 
 		$emoji = false;
 
@@ -130,7 +130,7 @@ class EmojiDetector
 
 	public function replaceEmoji($string, $prefix = "", $suffix = "")
 	{
-		while ($emoji = getFirstEmoji($string)) {
+		while ($emoji = $this->getFirstEmoji($string)) {
 			$offset = $emoji["byte_offset"];
 			$length = strlen($emoji["emoji"]);
 			$strlen = strlen($string);
